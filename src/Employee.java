@@ -4,6 +4,7 @@ public class Employee {
     int halfDay = 4;
     int hourlyPay = 20;
     int dailySalary = 0;
+    int monthlySalary = 0;
 
     // --------------UC1 --------------
      public void calculateAttendance(){
@@ -38,7 +39,7 @@ public class Employee {
      }
 
      //--------------- UC4 ---------------
-     public void calAttendanceUsingSwitch(){
+     public int calAttendanceUsingSwitch(){
          int check = (int)(Math.random()*3);
          dailyAttendance = check;
 
@@ -53,11 +54,13 @@ public class Employee {
                  System.out.println("Present");
                  break;
          }
+         return check;
      }
 
-     public void dailyWageUsingSwitch(){
+     public int dailyWageUsingSwitch(){
          switch (dailyAttendance){
              case 0:
+                 dailySalary = 0;
                  System.out.println("No pay");
                  break;
              case 1:
@@ -69,6 +72,22 @@ public class Employee {
                  System.out.println(dailySalary);
                  break;
          }
+         return dailySalary;
      }
+
+     // -------------- UC5 :Monthly Wage --------------
+    public void monthlyWage(){
+        int workingDays = 20;
+        monthlySalary = 0;
+
+        for(int i=1;i<= workingDays;i++){
+            System.out.println("\nDay " + i + ":");
+            calAttendanceUsingSwitch();
+            int wage = dailyWageUsingSwitch();
+            monthlySalary += wage;
+        }
+
+        System.out.println("Total Monthly Salary = " + monthlySalary);
+    }
 
 }
