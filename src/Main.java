@@ -19,5 +19,9 @@ public class Main {
 
         // -------------- UC6: Wage till 100 hours OR 20 days --------------
         e1.wageUnderCondition();
+
+        // -------------- UC7: Using Class Method & Class Variables -------------
+        e1.computeEmployeeWage();
+
     }
 }

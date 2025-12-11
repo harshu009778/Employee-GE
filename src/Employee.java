@@ -1,15 +1,20 @@
 public class Employee {
     int dailyAttendance;
-    int workPerDay = 8;
-    int halfDay = 4;
-    int hourlyPay = 20;
+    static int workPerDay = 8;
+    static int halfDay = 4;
+    static int hourlyPay = 20;
     int dailySalary = 0;
     int monthlySalary = 0;
 
-    int maxHours = 100;
-    int maxDays = 20;
+    static int maxHours = 100;
+    static int maxDays = 20;
     int totalHours = 0;
     double totalDays = 0;
+
+
+    private static int getAttendanceStatus() {
+        return (int)(Math.random() * 3);   // 0, 1, 2
+    }
 
     // --------------UC1 --------------
      public void calculateAttendance(){
@@ -116,4 +121,25 @@ public class Employee {
             int wages = totalHours * hourlyPay;
             System.out.println("Wages : " + wages);
         }
+
+    // ---------- UC7: Class Method to Compute Employee Wage ----------
+    public void computeEmployeeWage(){
+        while(totalDays <= maxDays || (totalHours <= maxHours)){
+            int dailyStatus = getAttendanceStatus();
+            if(dailyStatus == 0){
+                totalHours += 0;
+            }
+            else if(dailyStatus == 1){ // part time
+                totalHours += 4;
+            }
+            else if (dailyStatus == 2) { // full time
+                totalHours += 8;
+            }
+            totalDays++;
+
+        }
+
+        int wages = totalHours * hourlyPay;
+        System.out.println("Wages : " + wages);
+    }
 }
