@@ -142,4 +142,30 @@ public class Employee {
         int wages = totalHours * hourlyPay;
         System.out.println("Wages : " + wages);
     }
+
+    // ---------- UC8: Compute Employee Wage for multiple companies ----------
+    public static void computeEmployeeWage(String companyName, int hourlyPay, int maxDays, int maxHours) {
+
+        int totalHours = 0;
+        int totalDays = 0;
+
+        while (totalDays < maxDays && totalHours < maxHours) {
+
+            int dailyAttendance = getAttendanceStatus();
+
+            if (dailyAttendance == 1) {
+                totalHours += halfDay;
+            }
+            else if (dailyAttendance == 2) {
+                totalHours += workPerDay;
+            }
+            // absent → 0 hours
+
+            totalDays++;
+        }
+
+        int monthlySalary = totalHours * hourlyPay;
+
+        System.out.println(companyName + " ->  Total Days: " + totalDays + " | Total Hours: " + totalHours + " | Monthly Salary: " + monthlySalary);
+    }
 }

@@ -23,5 +23,9 @@ public class Main {
         // -------------- UC7: Using Class Method & Class Variables -------------
         e1.computeEmployeeWage();
 
+        // ---------- UC8: Compute Employee Wage for multiple companies ----------
+        e1.computeEmployeeWage("GE Vernova" , 25, 30 , 120);
+
+
     }
 }
